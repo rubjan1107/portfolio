@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDTOdX3lGciwHkBXgXBtDW34UGfGALIEFw",
+          authDomain: "myportfolio-e944a.firebaseapp.com",
+          projectId: "myportfolio-e944a",
+          storageBucket: "myportfolio-e944a.appspot.com",
+          messagingSenderId: "573254984572",
+          appId: "1:573254984572:web:c6e7328e7498b3c4e93af9",
+          measurementId: "G-DXD8J0270H"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            background-color: #182848;
+            position: relative;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-transform: capitalize;
+            color: chartreuse;
+        }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            background-color: #4b6cb7;
+        }
+
+        .hamburger {
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 2rem;
+            color: #fff;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 4px;
+            background-color: #fff;
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #182848;
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 20px 0;
+        }
+
+        /* Container and card styles */
+        .container {
+            padding: 60px 10%;
+            background-color: #f9f9f9;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 30px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: #182848;
+            color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        .resume-button {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 20px 0;
+            background-color: #4b6cb7;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .resume-button:hover {
+            background-color: #182848;
+        }
+
+        embed {
+            width: 100%;
+            height: 600px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #182848;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        footer a {
+            color: #4b6cb7;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Portfolio</h1>
+    </header>
+
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about" class="card">
+            <h2>About Me</h2>
+            <p>Hello! I'm Rubert Arul Valan F, a [Your Profession] passionate about [Your Passion]. I specialize in creating innovative solutions and pushing boundaries in [Your Field].</p>
+        </section>
+
+        <section id="projects" class="card">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Project 1</h3>
+                    <h4>Gym Management System</h4>
+                    
+                    <p>It's a simple project about the gym management created as my UG final year project.It have a simple login page based upaon the role of the user it will navigate the user to their respective pages after a successfull login.It have three types of users like admin,trainer and trainee.the page admin pannel contains all the things about the gym like availability of the equipments,trainers details,trainees details like basic information,membership details,etc,.the admin have the rights to change cetain things of the web page.if it was a trainer they can instuct the users about their workout datils,calories info,do's and dont's before and after doing the user to their respective users in weekly basis.the user can saw about their trainers experience,contact details and their workout shedule.if the user have eny queries they have a facilty to send them to the admin.admin can saw the queries and give a suitable suggestions to the user.it also have other pages like about the gym,facilities,packages of the gym.        </p>
+                <p>You can check out the project using the below link.</p>
+                  <a href="#">Gym management system</a></div>
+                <div class="project-card">
+                    <h3>Project 2</h3>
+                    <h4>Simple Antivirus Software</h4>
+                    <p>It is simple project as my mini-project during my PG 3rd semester.it's simple antivirus software using python.in this user can select a single file or entire folder containing more files.this software have some virus signature,supitious activities ,heuristic analysisand predefined some yara rules in the form of hash based code.after selecting the file to scan it will convert that into hash and compare with the virus signatures,yara rules.if it infected will show the file path with it's severity percentage of the file as a scan result.After complete the scan new window will pop-up and it contains the infected files.user can have a option to select all those files or particular file to remove that from the system permanantly.if user want to keep those files like quarantine using quarantine option.after quarantine it will moved to the seperate folder and made them non executable.  </p>
+                    <p>You can check out the project using the below link.</p>
+                  <a href="#">Simple Antivirus Software</a></div></div>
+            </div>
+        </section>
+
+        <section id="resume" class="card">
+            <h2>Resume</h2>
+            <p>Check out my resume or download it below:</p>
+            <a href="path_to_your_cv.pdf" class="resume-button" download>Download CV</a>
+            <embed src="path_to_your_cv.pdf" type="application/pdf">
+        </section>
+
+        <section id="contact" class="card">
+            <h2>Contact</h2>
+            <p>Phone: +918610031924</p>
+            <p>Email: rubertarulvalan42@gmail.com</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 valan. All Rights Reserved. <br>
+           <a href="#">LinkedIn</a> | <a href="#">GitHub</a>
+        </p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
